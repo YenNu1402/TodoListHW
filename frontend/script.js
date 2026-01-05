@@ -1,6 +1,7 @@
 const API = "/api/todos";
 const todoInput = document.getElementById("todoInput");
-const todoList = document.getElementById("todoList");
+const todoPending = document.getElementById("todoPending");
+const todoDone = document.getElementById("todoDone");
 
 // READ
 async function loadTodos() {
@@ -20,18 +21,27 @@ async function addNew() {
   await fetch(API, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ text })
+    body: JSON.stringify({
+      text,
+      status: "todo"   // THÊM DÒNG NÀY
+    })
   });
 
   todoInput.value = "";
   loadTodos();
 }
 
-// RENDER
+// RENDER (PHÂN LOẠI)
 function renderTodos(todos) {
-  todoList.innerHTML = "";
+  todoPending.innerHTML = "";
+  todoDone.innerHTML = "";
+
   todos.forEach(todo => {
     const li = document.createElement("li");
+
+    if (todo.status === "done") {
+      li.classList.add("done"); // dùng cho CSS gạch ngang
+    }
 
     li.innerHTML = `
       <div class="todo-text">${todo.text}</div>
@@ -50,7 +60,12 @@ function renderTodos(todos) {
         </div>
       </div>
     `;
-    todoList.appendChild(li);
+
+    if (todo.status === "done") {
+      todoDone.appendChild(li);
+    } else {
+      todoPending.appendChild(li);
+    }
   });
 }
 

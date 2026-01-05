@@ -12,49 +12,81 @@ body {
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    color: #fff;
 }
 
-h1, h3 {
+/* TITLE */
+h1 {
     text-align: center;
+    margin-bottom: 20px;
 }
 
+h2 {
+    margin-top: 20px;
+    border-bottom: 2px solid #777;
+    padding-bottom: 5px;
+}
+
+/* INPUT */
 .input-group {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    margin-bottom: 10px;
-
+    margin-bottom: 15px;
 }
 
 input {
     flex: 0.7;
     padding: 8px;
     border-radius: 5px;
+    border: none;
 }
 
 button {
     padding: 8px 12px;
     cursor: pointer;
     border-radius: 5px;
+    border: none;
+    background: #1e90ff;
+    color: white;
+}
+
+button:hover {
+    background: #0d6efd;
+}
+
+/* LIST */
+ul {
+    padding: 0;
+    margin-top: 10px;
 }
 
 li {
     list-style: none;
-    padding: 10px;
-    border-bottom: 1px solid #eee;
+    padding: 12px;
+    border-bottom: 1px solid #777;
 }
 
+/* TODO TEXT */
 .todo-text {
     margin-bottom: 8px;
 }
 
+/* DONE STYLE */
+.done .todo-text {
+    text-decoration: line-through;
+    color: #cfcfcf;
+}
+
+/* CONTROLS */
 .controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+/* STATUS DOTS */
 .status {
     display: flex;
     gap: 6px;
@@ -72,6 +104,7 @@ li {
     opacity: 1;
 }
 
+/* COLORS */
 .red { 
     background: #ff4757; 
 }
@@ -80,4 +113,21 @@ li {
 }
 .green { 
     background: #2ed573; 
+}
+
+h4 {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    padding-left: 10px;
+}
+
+.pending-title {
+    border-left: 5px solid #ffa502;
+}
+
+.done-title {
+    border-left: 5px solid #2ed573;
 }
