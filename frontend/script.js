@@ -2,6 +2,9 @@ const API = "/api/todos";
 const todoInput = document.getElementById("todoInput");
 const todoPending = document.getElementById("todoPending");
 const todoDone = document.getElementById("todoDone");
+const countPending = document.getElementById("countPending");
+const countDone = document.getElementById("countDone");
+
 
 // READ
 async function loadTodos() {
@@ -23,7 +26,7 @@ async function addNew() {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       text,
-      status: "todo"   // THÊM DÒNG NÀY
+      status: "todo"  
     })
   });
 
@@ -36,11 +39,17 @@ function renderTodos(todos) {
   todoPending.innerHTML = "";
   todoDone.innerHTML = "";
 
+  let pending = 0;
+  let done = 0;
+
   todos.forEach(todo => {
     const li = document.createElement("li");
 
     if (todo.status === "done") {
-      li.classList.add("done"); // dùng cho CSS gạch ngang
+      li.classList.add("done");
+      done++;
+    } else {
+      pending++;
     }
 
     li.innerHTML = `
@@ -67,6 +76,10 @@ function renderTodos(todos) {
       todoPending.appendChild(li);
     }
   });
+
+  // UPDATE COUNT
+  countPending.textContent = pending;
+  countDone.textContent = done;
 }
 
 // UPDATE STATUS

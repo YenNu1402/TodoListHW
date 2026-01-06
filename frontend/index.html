@@ -8,17 +8,23 @@
 </head>
 <body>
     <div class = "container">
+        <h4>Lê Thị Yến Nữ - 29201353779</h4>
         <h1>Todo List</h1>
         <div class="input-group">
             <input type="text" id="todoInput" placeholder="Nhập công việc cần thực hiện...">
             <button onclick="addNew()">Thêm mới</button>
         </div>
 
-        <h4 class="pending-title"> Chưa hoàn thành</h4>
-        <ul id="todoPending"></ul>
+        <div class="todo-columns">
+            <div class="column">
+                <h4> Chưa hoàn thành (<span id="countPending">0</span>)</h4>
+                <ul id="todoPending"></ul>
+            </div>
 
-        <h4 class="done-title"> Đã hoàn thành</h4>
-        <ul id="todoDone"></ul>
+            <div class="column">
+                <h4> Đã hoàn thành (<span id="countDone">0</span>)</h4>
+                <ul id="todoDone"></ul>
+            </div>
 
         <!-- <ul id="todoList"></ul> -->
     </div>

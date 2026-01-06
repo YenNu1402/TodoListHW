@@ -8,12 +8,12 @@ app.use(express.json());
 let todos = [];
 
 // READ
-app.get("/todos", (req, res) => {
+app.get("/api/todos", (req, res) => {
   res.json(todos);
 });
 
 // CREATE
-app.post("/todos", (req, res) => {
+app.post("/api/todos", (req, res) => {
   const todo = {
     id: Date.now(),
     text: req.body.text,
@@ -24,7 +24,7 @@ app.post("/todos", (req, res) => {
 });
 
 // UPDATE
-app.put("/todos/:id", (req, res) => {
+app.put("/api/todos/:id", (req, res) => {
   const id = Number(req.params.id);
   todos = todos.map(t =>
     t.id === id ? { ...t, ...req.body } : t
@@ -33,7 +33,7 @@ app.put("/todos/:id", (req, res) => {
 });
 
 // DELETE
-app.delete("/todos/:id", (req, res) => {
+app.delete("/api/todos/:id", (req, res) => {
   const id = Number(req.params.id);
   todos = todos.filter(t => t.id !== id);
   res.sendStatus(204);
