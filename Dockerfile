@@ -11,11 +11,11 @@ COPY backend /app/backend
 COPY frontend /usr/share/nginx/html
 
 # Copy nginx config
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copy start script
-COPY start.sh /start.sh
-RUN chmod +x /start.sh
+COPY start.sh /app/start.sh
+RUN chmod +x /app/start.sh
 
 # Cài node modules
 WORKDIR /app/backend
@@ -25,4 +25,4 @@ RUN npm install
 EXPOSE 80 3000
 
 # Chạy script
-CMD ["/start.sh"]
+CMD ["/bin/sh", "/app/start.sh"]
